@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fast-go-kms-test
+  labels:
+    app: fast-go-kms-test
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: fast-go-kms-test
+  template:
+    metadata:
+      labels:
+        app: fast-go-kms-test
+    spec:
+      serviceAccountName: r2-service-account
+      containers:
+      - name: fast-go-kms-test
+        image: 229256423288.dkr.ecr.us-west-1.amazonaws.com/fast-go-kms-test:latest
