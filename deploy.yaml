@@ -5,7 +5,7 @@ metadata:
   labels:
     app: fast-go-kms-test
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: fast-go-kms-test

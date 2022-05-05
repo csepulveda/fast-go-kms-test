@@ -3,17 +3,31 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
+	"time"
 
 	"github.com/hashicorp/go-kms-wrapping/wrappers/awskms"
 )
 
 func main() {
-	text, err := encript("test")
-	if err != nil {
-		fmt.Printf("error: %v", err)
-	} else {
-		fmt.Printf("The result after encript and decript is: %s", text)
+	start := time.Now()
+
+	runs := 0
+	for i := 0; i < 1000; i++ {
+		_, err := encript("test")
+		if err != nil {
+			fmt.Printf("error: %v", err)
+
+		}
+		runs += i
 	}
+
+	// } else {
+	// 	fmt.Printf("The result after encript and decript is: %s", text)
+	// }
+
+	elapsed := time.Since(start)
+	log.Printf("Binomial took %s", elapsed)
 
 }
 
